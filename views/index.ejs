@@ -7,5 +7,40 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+    <%if(user){%>
+      <script>
+        //将服务器端发来的json字符串user，转为客户端对象，保存在全局变量user中，以备后续功能
+        window.user = JSON.parse('<%- user %>');
+      </script>
+      <h1>Hello <%= JSON.parse(user).fullName %></h1>
+      <a href="/users/signout">注销</a>
+    <%}else{%>
+      <a href="/users/signup">注册</a>
+      <a href="/users/signin">登录</a>
+    <%}%>
+
+    <section ng-controller="ArticlesController">
+      <div ng-show="user">
+      <ul>
+        <li><a href="/#!/articles">文章列表</a></li>
+        <li><a href="/#!/articles/create">创建文章</a></li>
+      </ul>
+      </div>
+    </section>
+    <section ng-view></section>
+
+    <script src="/lib/angular/angular.js"></script>
+    <script src="/lib/angular-route/angular-route.js"></script>
+    <script src="/lib/angular-resource/angular-resource.js"></script>
+
+    <script src="/user/user.module.js"></script>
+    <script src="/user/services/getUser.service.js"></script>
+
+    <script src="/articles/articles.module.js"></script>
+    <script src="/articles/services/articles.service.js"></script>
+    <script src="/articles/controllers/articles.controller.js"></script>
+    <script src="/articles/config/articles.routes.js"></script>
+
+    <script src="/app.js"></script>
   </body>
 </html>

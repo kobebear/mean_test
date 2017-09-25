@@ -16,6 +16,7 @@ var UserSchema=new Schema({
   },
   email:{
     type:String,
+    required:"邮箱不能为空",
     unique:true,
     match:[/.+\@.+\..+/,"邮箱格式不正确"]
   },

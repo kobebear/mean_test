@@ -8,11 +8,11 @@ exports.render=(req,res)=>{
         //加载index视图，并传入title参数，以及当前user对象
         res.render('index', {
           title: 'MEAN' ,
-          fullName: user.fullName
+          user: JSON.stringify(user)
         })
       });
   }else{//否则，说明没有登录
-    //加载index视图，并传入title参数，不再回发user
-    res.render('index', { title: 'MEAN' ,fullName:""});
+    //加载index视图，并传入title参数，否则，发空user
+    res.render('index', { title: 'MEAN',user:""});
   }
 }

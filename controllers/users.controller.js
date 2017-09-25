@@ -56,7 +56,7 @@ exports.signup=(req,res)=>{
       })
       .catch(err=>{//一旦出错
         req.session.msg=getErrorMessage(err);
-        res.redirect("/users/signup");//重定向回signup路径
+        res.redirect("/user/signup");//重定向回signup路径
       })
   }
 }
@@ -70,7 +70,7 @@ exports.signin=(req,res)=>{
         res.redirect("/");
       }else{
         req.session.msg="用户名或密码不正确！";
-        res.redirect("/users/signin");
+        res.redirect("/user/signin");
       }
     });
 }
@@ -78,4 +78,13 @@ exports.signin=(req,res)=>{
 exports.signout=(req,res)=>{
   req.session.uid=null;
   res.redirect("/");
+}
+//中间件函数，为文章功能提供的操作前登录检查
+exports.requireLogin=(req,res,next)=>{
+  //如果未登录，就向当前页返回响应，提示先登录
+  if(!req.session.uid){
+    return res.status(401).send({msg:"用户未登陆"})
+  }else{
+    next();//登录后才可继续执行后续操作
+  }
 }
