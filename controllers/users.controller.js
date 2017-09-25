@@ -74,10 +74,8 @@ exports.signin=(req,res)=>{
       }
     });
 }
-/*
 //post请求注销用户时执行
 exports.signout=(req,res)=>{
   req.session.uid=null;
   res.redirect("/");
 }
-*/
