@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<%if(msg){%>
+  <div class="err"><%=msg%></div>
+<%}%>
+<form action="/users/signup" method="post">
+  <p>Username:<input name="username" value="zhangdong"/></p>
+  <p>Password:<input type="password" name="password" value="123456"/></p>
+  <p>Email:<input name="email" value="zhangdong@tedu.cn"/></p>
+  <p>First Name:<input name="firstName" value="东"/></p>
+  <p>Last Name:<input name="lastName" value="张"/></p>
+  <p><input type="submit" value="Sign up"/></p>
+</form>
+</body>
+</html>

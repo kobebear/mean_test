@@ -1,0 +1,23 @@
+<!--为文章列表功能添加控制器,并使用find()方法初始化控制器局部变量-->
+<section ng-controller="ArticlesController" ng-init="find()">
+  <h1>文章列表</h1>
+  <ul><!--根据find()中查找到的所有文章列表，反复生成li-->
+    <li ng-repeat="article in articles">
+      <!--设置超链接的内容为当前文章的标题，设置超链接的href属性为NG的路由地址,并在地址中动态绑定文章的_id-->
+      <a ng-href="#!/articles/{{article._id}}" ng-bind="article.title"></a>
+      <br>
+      <!--绑定文章的创建时间，并定义日期格式-->
+      <small ng-bind="article.createdDate | date:'medium'"></small>
+      <small>/</small>
+      <!--绑定文章作者的全名-->
+      <small ng-bind="article.author.fullName"></small>
+      <!--显示文章内容-->
+      <p ng-bind="article.content"></p>
+    </li>
+  </ul>
+  <!--如果文章列表为空，就显示创建文章的提示和超链接-->
+  <div ng-hide="!articles || articles.length">
+    <!--超链接的地址写死指向NG的路由地址-->
+    没有文章...为什么不现在就<a href="/#!/articles/create">创建一个</a>
+  </div>
+</section>

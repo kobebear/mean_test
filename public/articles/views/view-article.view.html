@@ -1,0 +1,26 @@
+<!--指定控制器ArticlesController，
+使用控制器方法findOne初始化控制器变量-->
+<section ng-controller="ArticlesController"
+         ng-init="findOne()">
+  <!--单向绑定控制器变量article对象的title属性-->
+  <h1 ng-bind="article.title"></h1>
+  <!--利用getUser服务获得当前用户对象，
+  并判断用户的_id是否与当前文章的_id一致。
+  如果一致，说明是作者本人，才显示编辑和删除-->
+  <div ng-show="user._id==article.author._id">
+    <!--添加编辑和删除超链接
+      编辑按钮，跳转到编辑视图，路由参数中挈带当前文章的_id值
+      删除按钮，不跳转，直接调用控制器方法delete，删除当前文章
+    -->
+    <a href="/#!/articles/{{article._id}}/edit">编辑</a>
+    <a href="#" ng-click="delete()">删除</a>
+  </div>
+  <small>
+    <em>时间</em>
+    <!--单向绑定控制器变量article对象的文章时间和文章作者属性-->
+    <em ng-bind="article.createdDate | date:'mediumDate'"></em>
+    <em ng-bind="article.author.fullName"></em>
+  </small>
+  <!--单向绑定文章内容-->
+  <p ng-bind="article.content"></p>
+</section>

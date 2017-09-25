@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<!--获得服务器端的messages对象，并显示错误消息-->
+<%if(msg){%>
+<div class="err"><%=msg%></div>
+<%}%>
+<!--定义向服务器的/signin路径发送post请求的表单-->
+<form action="/users/signin" method="post">
+  <p>Username:<input name="username" value="zhangdong"/></p>
+  <p>Password:<input type="password" name="password" value="123456"/></p>
+  <p><input type="submit" value="Sign In"/></p>
+</form>
+</body>
+</html>

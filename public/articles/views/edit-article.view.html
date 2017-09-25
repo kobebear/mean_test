@@ -1,0 +1,23 @@
+<!--为当前视图指定控制器ArticlesController，并调用控制器函数findOne初始化控制器变量-->
+<section ng-controller="ArticlesController" ng-init="findOne()">
+  <h1>编辑文章</h1>
+  <!--表单提交使用控制器函数update()，未指定novalidate，说明提交前要对表单内容验证(利用H5新属性)-->
+  <form ng-submit="update()">
+    <div>
+      <label for="title">标题</label>
+      <div>
+        <!--双向绑定当前控制器变量article对象的title属性，要求必填(H5新属性)-->
+        <input ng-model="article.title" id="title" placeholder="标题" required/>
+      </div>
+    </div>
+    <div>
+      <label for="content">内容</label>
+      <div>
+        <!--双向绑定当前控制器变量article对象的content属性-->
+        <textarea ng-model="article.content" id="content" cols="30" rows="10" placeholder="内容"></textarea>
+      </div>
+    </div>
+    <div><input type="submit" value="更新"/></div>
+    <div ng-show="error"><strong ng-bind="error"></strong></div>
+  </form>
+</section>

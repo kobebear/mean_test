@@ -1,0 +1,23 @@
+<!--为创建文章视图指定控制器-->
+<section ng-controller="ArticlesController">
+  <h1>新建文章</h1>
+  <!--指定表单提交使用控制器的create()方法，并其提交时不对表单验证-->
+  <form ng-submit="create()" novalidate>
+    <div>
+      <label for="title">标题</label>
+      <div>
+        <!--双向绑定控制器变量title，如果控制器中未自动创建，可自动创建-->
+        <input ng-model="title" id="title" placeholder="标题" required>
+      </div>
+    </div>
+    <div>
+      <label for="content">内容</label>
+      <div>
+        <!--双向绑定控制器变量content，如果控制器中未提前创建，可自动创建-->
+        <textarea ng-model="content" id="content" cols="30" rows="10" placeholder="内容"></textarea>
+      </div>
+    </div>
+    <div><input type="submit" value="保存"/></div>
+    <div ng-show="error"><strong ng-bind="error"></strong></div>
+  </form>
+</section>
