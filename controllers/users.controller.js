@@ -56,7 +56,7 @@ exports.signup=(req,res)=>{
       })
       .catch(err=>{//一旦出错
         req.session.msg=getErrorMessage(err);
-        res.redirect("/user/signup");//重定向回signup路径
+        res.redirect("/users/signup");//重定向回signup路径
       })
   }
 }
@@ -70,7 +70,7 @@ exports.signin=(req,res)=>{
         res.redirect("/");
       }else{
         req.session.msg="用户名或密码不正确！";
-        res.redirect("/user/signin");
+        res.redirect("/users/signin");
       }
     });
 }
